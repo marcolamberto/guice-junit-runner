@@ -1,4 +1,4 @@
-package net.lm.junit;
+package net.lamberto.junit;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
@@ -20,8 +20,9 @@ import com.google.inject.name.Named;
 import com.google.inject.name.Names;
 
 import lombok.Getter;
-import net.lm.junit.GuiceJUnitRunner.GuiceModules;
-import net.lm.junit.GuiceJUnitRunnerTest.TestModule;
+import net.lamberto.junit.GuiceJUnitRunner;
+import net.lamberto.junit.GuiceJUnitRunner.GuiceModules;
+import net.lamberto.junit.GuiceJUnitRunnerTest.TestModule;
 
 @RunWith(GuiceJUnitRunner.class)
 @GuiceModules(TestModule.class)
