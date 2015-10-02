@@ -1,4 +1,4 @@
-package net.lm.junit;
+package net.lamberto.junit;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;
