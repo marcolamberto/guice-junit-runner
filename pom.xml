@@ -20,6 +20,7 @@
 	</licenses>
 
 	<scm>
+		<connection>scm:git:https://github.com/marcolamberto/guice-junit-runner.git</connection>
 		<url>https://github.com/marcolamberto/guice-junit-runner.git</url>
 	</scm>
 
