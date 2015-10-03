@@ -1,4 +1,7 @@
-# guice-junit-runner
+guice-junit-runner
+====
+
+**Continuous Integration:** [![Build Status](https://api.travis-ci.org/marcolamberto/guice-junit-runner.png?branch=master)](https://travis-ci.org/marcolamberto/guice-junit-runner) <br/>
 
 A Guice JUnit Runner
 
