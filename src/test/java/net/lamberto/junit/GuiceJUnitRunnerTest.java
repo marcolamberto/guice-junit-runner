@@ -7,6 +7,10 @@ import static org.junit.Assert.assertThat;
 
 import java.util.Collection;
 
+import lombok.Getter;
+import net.lamberto.junit.GuiceJUnitRunner.GuiceModules;
+import net.lamberto.junit.GuiceJUnitRunnerTest.TestModule;
+
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,15 +23,11 @@ import com.google.inject.Injector;
 import com.google.inject.name.Named;
 import com.google.inject.name.Names;
 
-import lombok.Getter;
-import net.lamberto.junit.GuiceJUnitRunner;
-import net.lamberto.junit.GuiceJUnitRunner.GuiceModules;
-import net.lamberto.junit.GuiceJUnitRunnerTest.TestModule;
-
 @RunWith(GuiceJUnitRunner.class)
 @GuiceModules(TestModule.class)
 public class GuiceJUnitRunnerTest {
 	private static final String SOME_VALUE = "Some value!";
+	private static final String ANOTHER_VALUE = "Another value!";
 
 	@Inject
 	private SampleBean sample;
@@ -44,7 +44,7 @@ public class GuiceJUnitRunnerTest {
 
 	@AfterClass
 	public static void afterClass() {
-		assertThat(injectors, hasSize(2));
+		assertThat(injectors, hasSize(3));
 	}
 
 	@Test
@@ -58,12 +58,28 @@ public class GuiceJUnitRunnerTest {
 		basicUsage();
 	}
 
+	@Test
+	@GuiceModules(TestAnotherModule.class)
+	public void itShouldSupportMethodAnnotations() {
+		assertThat(sample, is(notNullValue()));
+		assertThat(sample.getValue(), is(ANOTHER_VALUE));
+	}
+
+
 	public static class TestModule extends AbstractModule {
 		@Override
 		protected void configure() {
 			bind(String.class).annotatedWith(Names.named("some-value")).toInstance(SOME_VALUE);
 		}
 	}
+
+	public static class TestAnotherModule extends AbstractModule {
+		@Override
+		protected void configure() {
+			bind(String.class).annotatedWith(Names.named("some-value")).toInstance(ANOTHER_VALUE);
+		}
+	}
+
 
 	@Getter
 	public static class SampleBean {
