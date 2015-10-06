@@ -33,7 +33,7 @@ You can easily add one more modules by using the @GuiceModules annotation.
 @RunWith(GuiceJUnitRunner.class)
 @GuiceModules(TestModule.class)
 public class GuiceJUnitRunnerTest {
-	
+
 	public static class TestModule extends AbstractModule {
 		@Override
 		protected void configure() {
@@ -45,6 +45,12 @@ public class GuiceJUnitRunnerTest {
 
 	@Inject
 	public MyService service;
+
+	@Test
+	@GuiceModules(TestModule2.class)
+	public void perTestSpecificModule() {
+		// ...
+	}
 
 	@Test
 	public void test() {
